@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos de Notificação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 1rem;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eventos de Notificação Recebidos</h1>
+    <button onclick="carregarEventos()">🔄 Atualizar</button>
+    <table id="eventos">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Recebido em</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        async function carregarEventos() {
+            const response = await fetch('/api/events');
+            const eventos = await response.json();
+            const tbody = document.querySelector('#eventos tbody');
+            tbody.innerHTML = '';
+
+            eventos.forEach(evento => {
+                const linha = `
+                    <tr>
+                        <td>${evento.userId}</td>
+                        <td>${evento.email}</td>
+                        <td>${evento.phone}</td>
+                        <td>${evento.timestamp}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += linha;
+            });
+        }
+        carregarEventos();
+    </script>
+</body>
+</html>
