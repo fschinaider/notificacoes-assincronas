@@ -80,7 +80,7 @@ Enviando e-mail para: exemplo@email.com | Nome: exemplo@email.com
 
 ## Visualizar mensagens
 
-Acesse [http://localhost:8080](http://localhost:8080) para ver a página de visualização estática com as notificações recebidas **durante a execução**.
+Acesse [http://localhost:8080/events.html](http://localhost:8080/events.html) para ver a página de visualização estática com as notificações recebidas **durante a execução**.
 
 ## Observações
 
